@@ -1,0 +1,33 @@
+@startuml
+class Biblioteca {
+    - nome: str
+    - libri: list
+    - utenti: list
+    + aggiungi_libro(libro: Libro)
+    + registra_utente(utente: Utente)
+    + mostra_libri_disponibili()
+}
+
+class Utente {
+    - nome: str
+    - cognome: str
+    - id_utente: str
+    - libri_prestati: list
+    + __str__()
+    + prendi_in_prestito(libro: Libro)
+    + restituisci(libro: Libro)
+}
+
+class Libro {
+    - titolo: str
+    - autore: str
+    - isbn: str
+    - disponibile: bool
+    + __str__()
+    + cambia_disponibilita(stato: bool)
+}
+
+Biblioteca --> Libro : gestisce
+Biblioteca --> Utente : registra
+Utente --> Libro : prende in prestito
+@enduml
